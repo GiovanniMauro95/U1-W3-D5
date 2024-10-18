@@ -104,13 +104,51 @@ console.log(deleteOne("Buonasera", false))
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
 
+// Uso un .replace a cui come pattern do tutti i valori numerici [0-9], come replacement do una stringa vuota,
+// al pattern assegno una flag g che sostituise ad ogni occorrenza un numero con una stringa vuota,
+// poi faccio un console.log per verificarne la funzionalità.
+const onlyLetters = function (string) {
+  return string.replace(/[0-9]/g, "")
+}
+console.log(onlyLetters("Io ho 29 anni"))
+
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
 
+// Alla funzione aggiungo un return che diventa true se la stringa utilizzata come parametro contiene una chiocciola, contiene un punto,
+// e se la chiocciola viene prima del punto. Sotto faccio due console.log per verificarne la funzionalità.
+const isThisAnEmail = function (string) {
+  return (
+    string.includes("@") &&
+    string.includes(".") &&
+    string.indexOf("@") < string.indexOf(".")
+  )
+}
+console.log(isThisAnEmail("pippobaudo@hotmail.it"))
+console.log(isThisAnEmail("pippobaudo.lol@gmail.com"))
+
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
 */
+
+//All'intero della funzione creo un'array con dentro i giorni della settimana e una seconda costante che prende il valore della data di oggi.
+//La funzione ritorna il numero del giorno della settimana e lo usa come indice nell'array per prenderne il nome.
+// Poi faccio un console.log per verificarne la funzionalità.
+const whatDayIsIt = function () {
+  const days = [
+    "Lunedì",
+    "Martedì",
+    "Mecoledì",
+    "Giovedì",
+    "Venerdì",
+    "Sabato",
+    "Domenica",
+  ]
+  const today = new Date()
+  return days[today.getDay() - 1]
+}
+console.log(whatDayIsIt())
 
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollTheDices" che riceve un numero come parametro.
@@ -125,9 +163,42 @@ console.log(deleteOne("Buonasera", false))
   }
 */
 
+// Creo una costante per la somma ed una variabile per i valori del lancio dei dati, poi inizio un ciclo for che si ripete tante volte
+// quanto il valore del parametro num, cioè per il numero di dadi che lancio. Ogni risultato del tiro del dado diventa una costante
+// che poi vado a pushare all'interno dell'array values, e cambio il valore della variabile sum rendendolo uguale
+// alla somma di tutti gli elementi di values. Poi faccio un console.log per verificarne la funzionalità.
+const rollTheDices = function (num) {
+  let sum = 0
+  const values = []
+
+  for (let i = 0; i < num; i++) {
+    const value = dice()
+    values.push(value)
+    sum = sum + value
+  }
+  return { sum, values }
+}
+console.log(rollTheDices(3))
+
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
 */
+
+// Creo una costante per prendere il giorno di oggi, e creo una seconda costante in cui inserisco la data dalla quale voglio vedere quanti
+// giorni sono passati. Successivamente creo una variabile day e faccio partire un contatore che si ferma raggiunta la data di oggi.
+// Alla riga 196 incremento il giorno passato di una volta ogni ciclo fino ad arrivare al giorno di oggi e faccio ritornare la data di oggi meno 1(per escludere l'ultima data, che sarebbe oggi).
+// Alla fine faccio un console.log per verificarne la funzionalità.
+const howManyDays = function (date) {
+  const today = new Date()
+  const beforeDate = new Date(date)
+  let day = 0
+  while (beforeDate < today) {
+    beforeDate.setDate(beforeDate.getDate() + 1)
+    day++
+  }
+  return day - 1
+}
+console.log(howManyDays("10-01-2024"))
 
 /* ESERCIZIO 10
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
