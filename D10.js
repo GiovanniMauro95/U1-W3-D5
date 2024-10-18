@@ -405,18 +405,69 @@ console.log(onlyInLastMillennium(movies))
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
 
+// Creo una variabile somma e inizio un ciclo for per ogni elemento dell'array movies. Vado a sommare il valore di Years di ogni oggetto
+// e poi stampo in console il valore della somma di tutti gli anni.
+const sumAllTheYears = function () {
+  let sum = 0
+  for (let i = 0; i < movies.length; i++) {
+    sum = sum + parseInt(movies[i].Year)
+  }
+  return sum
+}
+console.log(sumAllTheYears(movies))
+
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
+
+// Creo un array in cui andranno tutti gli elementi con la stringa fornita, faccio un ciclo for per verificare ogni elemento
+// dell'array e vedere se la contengono e col .includes lo veriofico. Se la contengono vengono pushati all'interno del nuovo array
+// che poi viene mostrato in console.
+const searchByTitle = function (string) {
+  const research = []
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].Title.includes(string)) {
+      research.push(movies[i])
+    }
+  }
+  return research
+}
+console.log(searchByTitle("Avengers"))
 
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
 
+// Inizio un ciclo for per controllare tutti gli elementi, col .include verifico se contengono il parametro all'interno del titolo,
+// se lo contengono allora li pusho dentro match, se non lo contengono vengono pushati all'interno di unmatch.
+// Infine stampo tutto in console.
+const searchAndDivide = function (string) {
+  const movie = {
+    match: [],
+    unmatch: [],
+  }
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].Title.includes(string)) {
+      movie.match.push(movies[i])
+    } else {
+      movie.unmatch.push(movies[i])
+    }
+  }
+  return movie
+}
+console.log(searchAndDivide("Lord"))
+
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
+
+// Vado ad usare un .splice che elimina l'elemento all'indice fornito e poi ritorno l'array movies modificato.
+const removeIndex = function (num) {
+  movies.splice(num - 1, 1)
+  return movies
+}
+console.log(removeIndex(14))
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
