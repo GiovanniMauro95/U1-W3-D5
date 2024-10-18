@@ -475,30 +475,87 @@ console.log(removeIndex(14))
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
 
+const findCon = function () {
+  const container = document.getElementById("container")
+  return container
+}
+console.log(findCon())
+
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
 
+const findTd = function () {
+  const tds = document.getElementsByTagName("td")
+  for (let i = 0; i < tds.length; i++) {
+    console.log(tds[i])
+  }
+}
+console.log(findTd())
+
 /* ESERCIZIO 22
-  Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
+Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
+const stampTd = function () {
+  const tds = document.getElementsByTagName("td")
+  for (let i = 0; i < tds.length; i++) {
+    console.log(tds[i].textContent)
+  }
+}
+console.log(stampTd())
 
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
 
+const addBg = function () {
+  const links = document.querySelectorAll("a")
+  for (let i = 0; i < links.length; i++) {
+    links[i].style.backgroundColor = "red"
+  }
+}
+console.log(addBg)
+
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
 
+// Creo due costanti, una è la lista e gli altri sono gli li che andranno al suo interno.
+// Come testo delle nuove li gli metto la stringa come parametro e poi le appendo alla lista.
+// const addLi = function (string) {
+//   const list = document.getElementById("myList")
+//   const newLi = document.createElement("li")
+//   newLi.textContent = string
+//   list.appendChild(newLi)
+// }
+// console.log(addLi(/*string*/))
+
 /* ESERCIZIO 25
-  Scrivi una funzione per svuotare la lista non ordinata con id "myList".
+Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
+
+// Creo un ciclo while che elimina il primo elemento della lista finche l'elemento non è totalmente vuoto.
+// const deleteLi = function () {
+//   const list = document.getElementById("myList")
+//   while (list.firstChild) {
+//     list.removeChild(list.firstChild)
+//   }
+// }
+// console.log(deleteLi())
 
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
 
+// Faccio un ciclo for all'interno dell'array contenente tutti gli elementi con tag tr e per ogni elemento dell'array aggiungo la classe "test".
+// Poi lo stampo in console.
+const addClass = function () {
+  const tr = document.getElementsByClassName("tr")
+  for (let i = 0; i < tr.length; i++) {
+    tr[i].classList.add("test")
+  }
+}
+console.log(addClass())
 // [EXTRA] JS Avanzato
 
 /* ESERCIZIO 27
@@ -529,4 +586,17 @@ console.log(removeIndex(14))
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
 
+// Faccio un ciclo for partendo da 2 perchè i numeri minori o uguali a uno non sono primi, poi verifico che il numero non sia divisibile per i;
+// Se lo è non è primo, se non lo è allora ritorna false, poi verifico la funzionalità del codice.
+const isItPrime = function (num) {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false
+    } else {
+      return true
+    }
+  }
+}
+console.log(isItPrime(5))
+console.log(isItPrime(20))
 /* Questo array viene usato per gli esercizi. Non modificarlo. */
